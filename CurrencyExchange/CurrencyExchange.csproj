@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CurrencyExchange.cs" />
+    <Compile Include="ExchangeHistorySaver.cs" />
     <Compile Include="ExchangeRateProvider.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
