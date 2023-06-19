@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Net.Http;
 
-
-namespace CurrencyExchangeConsole
+namespace CurrencyExchange
 {
     public class ExchangeRateProvider
     {
