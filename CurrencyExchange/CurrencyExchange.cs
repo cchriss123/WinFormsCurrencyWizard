@@ -1,6 +1,6 @@
 ﻿
 
-namespace CurrencyExchangeConsole
+namespace CurrencyExchange
 {
     internal class CurrencyExchange
     {
