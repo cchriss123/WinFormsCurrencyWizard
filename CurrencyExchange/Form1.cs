@@ -17,11 +17,11 @@ namespace CurrencyExchange
             InitializeComponent();
             foreach (string code in currencyCodes)
             {
-                comboBox1.Items.Add(code);
-                comboBox2.Items.Add(code);
+                comboBoxFrom.Items.Add(code);
+                comboBoxTo.Items.Add(code);
             }
-            comboBox1.SelectedItem = "SEK";
-            comboBox2.SelectedItem = "USD";
+            comboBoxFrom.SelectedItem = "SEK";
+            comboBoxTo.SelectedItem = "USD";
         }
 
 
@@ -36,19 +36,26 @@ namespace CurrencyExchange
 
 
 
-
-
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Calculate_Click(object sender, EventArgs e)
         {
-       
+            if (comboBoxFrom.SelectedItem == null || comboBoxTo.SelectedItem == null)
+            {
+                comboBoxFrom.SelectedItem = "SEK";
+                comboBoxTo.SelectedItem = "USD";
+            }
 
+            if (!double.TryParse(textBoxAmount.Text, out double amount))
+            {
+                MessageBox.Show("Please enter a valid number for the amount.");
+                return;
+            }           
+        }
+
+        private void textBoxAmount_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }
