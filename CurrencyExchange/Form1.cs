@@ -26,7 +26,7 @@ namespace CurrencyExchange
 
 
 
-        List<string> currencyCodes = new List<string>()
+        List<string> currencyCodes = new List<string>()     // Hardcoded list of currency codes to save API calls
             {
                 "EUR", "USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN",
                 "RON", "SEK", "CHF", "ISK", "NOK", "TRY", "AUD", "BRL", "CAD",
@@ -38,24 +38,35 @@ namespace CurrencyExchange
 
         private void Calculate_Click(object sender, EventArgs e)
         {
-            if (comboBoxFrom.SelectedItem == null || comboBoxTo.SelectedItem == null)
+            // Needed or else the program will throw a null pointer exception error if the user doesn't select a currency
+            if (comboBoxFrom.SelectedItem == null || comboBoxTo.SelectedItem == null)   
             {
                 comboBoxFrom.SelectedItem = "SEK";
                 comboBoxTo.SelectedItem = "USD";
             }
 
-            if (!double.TryParse(textBoxAmount.Text, out double amount))
+           
+            if (!double.TryParse(textBoxAmount.Text, out double amountInFromCurrency))
             {
                 MessageBox.Show("Please enter a valid number for the amount.");
                 return;
-            }           
+            }
+
+            string fromCode = comboBoxFrom.SelectedItem.ToString();
+            string toCode = comboBoxTo.SelectedItem.ToString();
+            double exchangeRate = ExchangeRateProvider.GetExchangeRate(fromCode, toCode);
+            double price = Math.Round(1 / exchangeRate, 2); 
+            double amountInToCurrency = exchangeRate * amountInFromCurrency;
+            Console.WriteLine($"fromCode: {fromCode} | toCode: {toCode} | exchangeRate: {exchangeRate} | price: {price} | amountInToCurrency: {amountInToCurrency}");
+
+
+           
+
         }
 
-        private void textBoxAmount_TextChanged(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
-
     }
 }

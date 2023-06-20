@@ -19,7 +19,7 @@ namespace CurrencyExchange
                 string result = response.Content.ReadAsStringAsync().Result;
                 JObject json = JObject.Parse(result);
                 double rate = (double)json["rates"][toCode];
-                // Console.WriteLine(json.ToString());
+                Console.WriteLine(json.ToString());
                 return rate;
             }
             else

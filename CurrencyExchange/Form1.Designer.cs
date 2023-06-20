@@ -77,7 +77,6 @@
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(100, 20);
             this.textBoxAmount.TabIndex = 5;
-            this.textBoxAmount.TextChanged += new System.EventHandler(this.textBoxAmount_TextChanged);
             // 
             // label3
             // 
@@ -111,7 +110,8 @@
             this.Controls.Add(this.comboBoxTo);
             this.Controls.Add(this.comboBoxFrom);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CurrencyWizard";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
