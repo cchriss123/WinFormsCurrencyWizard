@@ -84,10 +84,7 @@ namespace CurrencyExchange
 
             currencyExchanges.Add(new CurrencyExchange(fromCode, toCode, price, amountInFromCurrency, amountInToCurrency));
             ExchangeHistorySaver.SaveExchanges(currencyExchanges, filePath);
-
-
-
-            
+            textBoxHistory.Text = string.Join("\r\n", currencyExchanges.Select(exchange => exchange.ToString()));
 
         }
 

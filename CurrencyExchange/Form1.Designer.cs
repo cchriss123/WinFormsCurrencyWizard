@@ -39,6 +39,7 @@
             this.textBoxResult = new System.Windows.Forms.TextBox();
             this.button2Confirm = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBoxHistory = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxFrom
@@ -93,7 +94,7 @@
             // 
             // buttonCalculate
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(28, 94);
+            this.buttonCalculate.Location = new System.Drawing.Point(466, 35);
             this.buttonCalculate.Name = "buttonCalculate";
             this.buttonCalculate.Size = new System.Drawing.Size(100, 23);
             this.buttonCalculate.TabIndex = 7;
@@ -104,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(145, 81);
+            this.label4.Location = new System.Drawing.Point(25, 81);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 8;
@@ -112,7 +113,7 @@
             // 
             // textBoxResult
             // 
-            this.textBoxResult.Location = new System.Drawing.Point(148, 97);
+            this.textBoxResult.Location = new System.Drawing.Point(28, 97);
             this.textBoxResult.Name = "textBoxResult";
             this.textBoxResult.ReadOnly = true;
             this.textBoxResult.Size = new System.Drawing.Size(418, 20);
@@ -120,7 +121,7 @@
             // 
             // button2Confirm
             // 
-            this.button2Confirm.Location = new System.Drawing.Point(28, 156);
+            this.button2Confirm.Location = new System.Drawing.Point(466, 97);
             this.button2Confirm.Name = "button2Confirm";
             this.button2Confirm.Size = new System.Drawing.Size(100, 23);
             this.button2Confirm.TabIndex = 10;
@@ -131,17 +132,27 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(145, 144);
+            this.label5.Location = new System.Drawing.Point(25, 144);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Exchange History";
             // 
+            // textBoxHistory
+            // 
+            this.textBoxHistory.Location = new System.Drawing.Point(28, 160);
+            this.textBoxHistory.Multiline = true;
+            this.textBoxHistory.Name = "textBoxHistory";
+            this.textBoxHistory.ReadOnly = true;
+            this.textBoxHistory.Size = new System.Drawing.Size(538, 346);
+            this.textBoxHistory.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 450);
+            this.ClientSize = new System.Drawing.Size(655, 549);
+            this.Controls.Add(this.textBoxHistory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2Confirm);
             this.Controls.Add(this.textBoxResult);
@@ -174,6 +185,7 @@
         private System.Windows.Forms.TextBox textBoxResult;
         private System.Windows.Forms.Button button2Confirm;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxHistory;
     }
 }
 
