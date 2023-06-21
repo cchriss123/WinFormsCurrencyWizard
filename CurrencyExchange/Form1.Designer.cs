@@ -144,6 +144,7 @@
             this.textBoxHistory.Multiline = true;
             this.textBoxHistory.Name = "textBoxHistory";
             this.textBoxHistory.ReadOnly = true;
+            this.textBoxHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxHistory.Size = new System.Drawing.Size(538, 346);
             this.textBoxHistory.TabIndex = 14;
             // 
@@ -151,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 549);
+            this.ClientSize = new System.Drawing.Size(599, 549);
             this.Controls.Add(this.textBoxHistory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2Confirm);

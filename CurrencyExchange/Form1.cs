@@ -79,11 +79,18 @@ namespace CurrencyExchange
 
         private void Confirm_Click(object sender, EventArgs e)
         {
+            
             if(exchangeRate == 0)
+            {
+                MessageBox.Show("Please calculate the exchange rate first.");
                 return;
+            }
 
-            currencyExchanges.Add(new CurrencyExchange(fromCode, toCode, price, amountInFromCurrency, amountInToCurrency));
-            ExchangeHistorySaver.SaveExchanges(currencyExchanges, filePath);
+
+
+            CurrencyExchange currencyExchange = new CurrencyExchange(fromCode, toCode, price, amountInFromCurrency, amountInToCurrency);
+            currencyExchanges.Add(currencyExchange);
+            ExchangeHistorySaver.SaveExchanges(currencyExchange, filePath);
             textBoxHistory.Text = string.Join("\r\n", currencyExchanges.Select(exchange => exchange.ToString()));
 
         }
