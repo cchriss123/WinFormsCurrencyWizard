@@ -81,7 +81,8 @@ namespace CurrencyExchange
             CurrencyExchange currencyExchange = new CurrencyExchange(fromCode, toCode, price, amountInFromCurrency, amountInToCurrency, System.DateTime.Now.ToString("yyyy-MM-dd"));
             currencyExchanges.Add(currencyExchange);
             ExchangeHistorySaver.SaveExchanges(currencyExchange, filePath);
-            textBoxHistory.Text = string.Join("\r\n", currencyExchanges.Select(exchange => exchange.ToString()));
+            var reversedLines = currencyExchanges.Select(exchange => exchange.ToString()).Reverse();
+            textBoxHistory.Text = string.Join("\r\n", reversedLines);
 
         }
 
@@ -90,7 +91,9 @@ namespace CurrencyExchange
         private void Form1_Load(object sender, EventArgs e)
         {   
             ExchangeHistoryLoader.LoadExchanges(currencyExchanges, filePath); // Load the exchange history from the file when the program starts
-            textBoxHistory.Text = string.Join("\r\n", currencyExchanges.Select(exchange => exchange.ToString()));
+
+            var reversedLines = currencyExchanges.Select(exchange => exchange.ToString()).Reverse();
+            textBoxHistory.Text = string.Join("\r\n", reversedLines);
         }
     }
 }

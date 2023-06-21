@@ -15,7 +15,8 @@ namespace CurrencyExchange
             var cultureInfo = CultureInfo.InvariantCulture;
 
             // cultureInfo to use . instead of , for decimal separator to avoid problems with csv,
-            // NumberStyles.Float is needed to parse numbers with . as decimal separator in conjunction with cultureInfo
+            // NumberStyles.Float is needed to parse numbers with . as decimal separator in conjunction with cultureInfo and double.TryParse
+            // Using parse rather than try parse so that the user cant make the program crash by entering invalid data in the csv file.
             // Tenary operator will set value to 0 if parsing fails.
          
             currencyExchanges.AddRange(
