@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
-using System.Threading;
+
 using System.Windows.Forms;
 
 namespace CurrencyExchange
@@ -27,6 +21,7 @@ namespace CurrencyExchange
             }
             comboBoxFrom.SelectedItem = "SEK";
             comboBoxTo.SelectedItem = "USD";
+
         }
 
         private string fromCode;
@@ -44,10 +39,7 @@ namespace CurrencyExchange
                 "PHP", "SGD", "THB", "ZAR"
             };
         string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "exchange_history.csv");
-
-
-
-
+ 
 
         private void Calculate_Click(object sender, EventArgs e)
         {
@@ -79,16 +71,14 @@ namespace CurrencyExchange
 
         private void Confirm_Click(object sender, EventArgs e)
         {
-            
-            if(exchangeRate == 0)
+            if (exchangeRate == 0)
             {
                 MessageBox.Show("Please calculate the exchange rate first.");
                 return;
             }
 
 
-
-            CurrencyExchange currencyExchange = new CurrencyExchange(fromCode, toCode, price, amountInFromCurrency, amountInToCurrency);
+            CurrencyExchange currencyExchange = new CurrencyExchange(fromCode, toCode, price, amountInFromCurrency, amountInToCurrency, System.DateTime.Now.ToString("yyyy-MM-dd"));
             currencyExchanges.Add(currencyExchange);
             ExchangeHistorySaver.SaveExchanges(currencyExchange, filePath);
             textBoxHistory.Text = string.Join("\r\n", currencyExchanges.Select(exchange => exchange.ToString()));
@@ -97,13 +87,10 @@ namespace CurrencyExchange
 
 
 
-
-
         private void Form1_Load(object sender, EventArgs e)
-        {
-
+        {   
+            ExchangeHistoryLoader.LoadExchanges(currencyExchanges, filePath); // Load the exchange history from the file when the program starts
+            textBoxHistory.Text = string.Join("\r\n", currencyExchanges.Select(exchange => exchange.ToString()));
         }
-
-
     }
 }

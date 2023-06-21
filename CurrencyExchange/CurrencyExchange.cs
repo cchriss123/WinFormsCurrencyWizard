@@ -1,5 +1,7 @@
 ﻿
 
+using System.Globalization;
+
 namespace CurrencyExchange
 {
     internal class CurrencyExchange
@@ -12,21 +14,21 @@ namespace CurrencyExchange
         public string Date { get; set; }
 
 
-        public CurrencyExchange(string fromCode, string toCode, double price, double amountPaid, double amountReceived)
+        public CurrencyExchange(string fromCode, string toCode, double price, double amountPaid, double amountReceived, string date)
         {
             FromCode = fromCode;
             ToCode = toCode;
             Price = price;
             AmountPaid = amountPaid;
             AmountReceived = amountReceived;
-            Date = System.DateTime.Now.ToString("yyyy-MM-dd");
+            Date = date;
         }
 
 
-        public override string ToString()
-        {
-            return $"Date: {Date} | From: {FromCode} | To: {ToCode} | Price: {Price} | Amount Paid: {AmountPaid} | Amount Received: {AmountReceived}";
-        }
+            public override string ToString()
+            {
+                return $"Date: {Date} | From: {FromCode} | To: {ToCode} | Price: {Price} | Amount Paid: {AmountPaid} | Amount Received: {AmountReceived}";
+            }
 
     }
 }

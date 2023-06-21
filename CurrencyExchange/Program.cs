@@ -20,12 +20,5 @@ namespace CurrencyExchange
             Application.Run(new Form1());
         }
 
-
-
-
-
-
-
-
     }
 }
