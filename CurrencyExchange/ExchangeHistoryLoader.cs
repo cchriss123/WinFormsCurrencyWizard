@@ -21,9 +21,9 @@ namespace CurrencyExchange
          
             currencyExchanges.AddRange(
                 File.ReadAllLines(filePath)
-                    .Select(line => line.Split(','))
-                    .Where(values => values.Length == 6)
-                    .Select(values => new CurrencyExchange(
+                    .Select(line => line.Split(','))        // Split each line into an array of strings
+                    .Where(values => values.Length == 6)    // Only keep lines with 6 values
+                    .Select(values => new CurrencyExchange(  
                         values[0],
                         values[1],
                         double.TryParse(values[2], NumberStyles.Float, cultureInfo, out var price) ? price : 0, 

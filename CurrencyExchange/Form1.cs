@@ -10,19 +10,6 @@ namespace CurrencyExchange
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-
-            InitializeComponent();
-            foreach (string code in currencyCodes)
-            {
-                comboBoxFrom.Items.Add(code);
-                comboBoxTo.Items.Add(code);
-            }
-            comboBoxFrom.SelectedItem = "SEK";
-            comboBoxTo.SelectedItem = "USD";
-
-        }
 
         private string fromCode;
         private string toCode;
@@ -30,7 +17,11 @@ namespace CurrencyExchange
         private double price;
         private double amountInFromCurrency;
         private double amountInToCurrency;
+
+        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "exchange_history.csv");
+
         List<CurrencyExchange> currencyExchanges = new List<CurrencyExchange>();
+        
         List<string> currencyCodes = new List<string>()     // Hardcoded list of currency codes to save API calls
             {
                 "EUR", "USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN",
@@ -38,33 +29,61 @@ namespace CurrencyExchange
                 "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD",
                 "PHP", "SGD", "THB", "ZAR"
             };
-        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "exchange_history.csv");
- 
+        
+        
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+
+
+        private void Form1_Load(object sender, EventArgs e) // Runs when the program starts
+        {
+            foreach (string code in currencyCodes)
+            {
+                comboBoxFrom.Items.Add(code);
+                comboBoxTo.Items.Add(code);
+            }
+            comboBoxFrom.SelectedItem = "SEK";
+            comboBoxTo.SelectedItem = "USD";
+            ExchangeHistoryLoader.LoadExchanges(currencyExchanges, filePath); 
+
+            var reversedLines = currencyExchanges.Select(exchange => exchange.ToString()).Reverse();
+            textBoxHistory.Text = string.Join("\r\n", reversedLines);
+
+        }
+
+
+
 
         private void Calculate_Click(object sender, EventArgs e)
         {
-            // Needed or else the program will throw a null pointer exception error if the user doesn't select a currency
-            if (comboBoxFrom.SelectedItem == null || comboBoxTo.SelectedItem == null)   
-            {
-                comboBoxFrom.SelectedItem = "SEK";
-                comboBoxTo.SelectedItem = "USD";
-            }
 
-           
             if (!double.TryParse(textBoxAmount.Text, out amountInFromCurrency))
             {
                 MessageBox.Show("Please enter a valid number for the amount.");
                 return;
             }
 
+
+            // Needed or else the program will throw a null pointer exception error if the user doesn't select a currency
+            if (comboBoxFrom.SelectedItem == null || comboBoxTo.SelectedItem == null)   
+            {
+                comboBoxFrom.SelectedItem = "SEK";
+                comboBoxTo.SelectedItem = "USD";
+                return;
+            }
+
+           
+ 
             fromCode = comboBoxFrom.SelectedItem.ToString();
             toCode = comboBoxTo.SelectedItem.ToString();
             exchangeRate = ExchangeRateProvider.GetExchangeRate(fromCode, toCode);
             price = Math.Round(1 / exchangeRate, 2); 
             amountInToCurrency = Math.Round(exchangeRate * amountInFromCurrency, 2);            
             textBoxResult.Text = $"From: {fromCode} | To: {toCode} | price: {price} | amount paid: {amountInFromCurrency} | amount recived: {amountInToCurrency}";
-
-            Console.WriteLine($"fromCode:{fromCode} | toCode: {toCode} | exchangeRate: {exchangeRate} | price: {price} | amountInToCurrency: {amountInToCurrency}");
 
 
         }
@@ -87,13 +106,5 @@ namespace CurrencyExchange
         }
 
 
-
-        private void Form1_Load(object sender, EventArgs e)
-        {   
-            ExchangeHistoryLoader.LoadExchanges(currencyExchanges, filePath); // Load the exchange history from the file when the program starts
-
-            var reversedLines = currencyExchanges.Select(exchange => exchange.ToString()).Reverse();
-            textBoxHistory.Text = string.Join("\r\n", reversedLines);
-        }
     }
 }

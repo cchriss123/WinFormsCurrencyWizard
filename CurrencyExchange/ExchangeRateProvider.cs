@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
+using System.Windows.Forms;
 
 namespace CurrencyExchange
 {
@@ -24,7 +25,7 @@ namespace CurrencyExchange
             }
             else
             {
-                Console.WriteLine("Error: Unable to fetch data from the API. Response code: " + response.StatusCode);
+                MessageBox.Show("Error: Unable to fetch data from the API. Response code: " + response.StatusCode);
                 return 0;
             }
         }

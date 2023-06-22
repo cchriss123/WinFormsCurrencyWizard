@@ -6,11 +6,11 @@ namespace CurrencyExchange
 {
     internal class CurrencyExchange
     {
-        public string FromCode { get;}
-        public string ToCode { get; }
-        public double Price { get; }
-        public double AmountPaid { get; }
-        public double AmountReceived { get; }
+        public string FromCode { get; set; }
+        public string ToCode { get; set; }
+        public double Price { get; set; }
+        public double AmountPaid { get; set; }
+        public double AmountReceived { get; set; }
         public string Date { get; set; }
 
 

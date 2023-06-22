@@ -94,7 +94,7 @@
             // 
             // buttonCalculate
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(466, 35);
+            this.buttonCalculate.Location = new System.Drawing.Point(509, 35);
             this.buttonCalculate.Name = "buttonCalculate";
             this.buttonCalculate.Size = new System.Drawing.Size(100, 23);
             this.buttonCalculate.TabIndex = 7;
@@ -116,12 +116,12 @@
             this.textBoxResult.Location = new System.Drawing.Point(28, 97);
             this.textBoxResult.Name = "textBoxResult";
             this.textBoxResult.ReadOnly = true;
-            this.textBoxResult.Size = new System.Drawing.Size(418, 20);
+            this.textBoxResult.Size = new System.Drawing.Size(457, 20);
             this.textBoxResult.TabIndex = 9;
             // 
             // button2Confirm
             // 
-            this.button2Confirm.Location = new System.Drawing.Point(466, 97);
+            this.button2Confirm.Location = new System.Drawing.Point(509, 95);
             this.button2Confirm.Name = "button2Confirm";
             this.button2Confirm.Size = new System.Drawing.Size(100, 23);
             this.button2Confirm.TabIndex = 10;
@@ -145,14 +145,14 @@
             this.textBoxHistory.Name = "textBoxHistory";
             this.textBoxHistory.ReadOnly = true;
             this.textBoxHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxHistory.Size = new System.Drawing.Size(538, 346);
+            this.textBoxHistory.Size = new System.Drawing.Size(581, 346);
             this.textBoxHistory.TabIndex = 14;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 549);
+            this.ClientSize = new System.Drawing.Size(646, 549);
             this.Controls.Add(this.textBoxHistory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2Confirm);
